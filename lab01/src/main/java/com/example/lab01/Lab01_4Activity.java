@@ -25,7 +25,7 @@ public class Lab01_4Activity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) buttonView.setText("is checked");
-                else buttonView.setText("is unchecked");
+                else buttonView.setText("is unchecked");  
             }
         });
     }
