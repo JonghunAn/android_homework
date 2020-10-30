@@ -3,12 +3,14 @@ package com.example.lab03;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -79,6 +81,20 @@ public class Lab03_2Activity extends AppCompatActivity implements View.OnClickLi
             alertDialog = builder.create();
             alertDialog.show();
             }
+        else if (view == dateBtn) {
+            // 현재 날짜로 dialog를 띄우기 위해 날짜를 구함
+            Calendar c = Calendar.getInstance(); // java.util.Calendar
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dateDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    showToast(year + "-" + (month + 1) + "-" + dayOfMonth);
+                }
+            }, year, month, day);
+            dateDialog.show();
+        }
         else if (view == timeBtn) {
         // 현재 시간으로 Dialog를 띄우기 위해 시간을 구함
             Calendar c = Calendar.getInstance(); // java.util.Calendar
